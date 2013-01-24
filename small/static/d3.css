@@ -1,0 +1,45 @@
+path {
+  stroke: steelblue;
+  fill: none;
+  stroke-width: 1;
+}
+
+rect {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.x line, .y line {
+  stroke: #ccc;
+  shape-rendering: crispEdges;
+}
+
+.chart rect {
+   stroke: white;
+   fill: steelblue;
+ }
+
+.chart div {
+   font: 10px sans-serif;
+   background-color: steelblue;
+   text-align: right;
+   padding: 3px;
+   margin: 1px;
+   color: white;
+ }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: #6cf;
+}
+
+.x.axis path {
+  display: none;
+}

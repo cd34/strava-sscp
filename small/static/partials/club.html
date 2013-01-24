@@ -1,0 +1,52 @@
+<div class="modal hide fade" id="loading">
+  <div class="modal-header">
+    <h3>Fetching data</h3>
+  </div>
+  <div class="modal-body">
+    <p>Grabbing the Club Members and ride data</p>
+  </div>
+  <div class="modal-footer">
+Please be patient, this could take a few seconds...
+  </div>
+</div>
+
+<div ng-hide="!member_data[0]">
+<p>
+<div class="btn-group">
+  <button ng-init="measurement='imperial';impactive='btn-primary';metactive='btn-active'" ng-click="measurement='imperial';impactive='btn-primary';metactive='btn-active'" ng-disabled="measurement=='imperial'" ng-class='impactive' class="btn">Imperial</button>
+  <button ng-click="measurement='metric';metactive='btn-primary';impactive='btn-active'" ng-disabled="measurement=='metric'" class="btn" ng-class='metactive'>Metric</button>
+</div>
+</p>
+
+<table class="table table-condensed table-bordered table-striped">
+<tr>
+  <th>Position</th>
+  <th>Name</th>
+  <th><a href="" ng-init="predicate='-elevation'" ng-click="predicate='elevation'; reverse=!reverse">Elevation</a></th>
+  <th><a href="" ng-click="predicate='rides'; reverse=!reverse">Rides</a></th>
+  <th><a href="" ng-click="predicate='avg_elevation'; reverse=!reverse">Average Elevation</a></th>
+  <th><a href="" ng-click="predicate='total_distance'; reverse=!reverse">Total Distance</a></th>
+  <th><a href="" ng-click="predicate='ride'; reverse=!reverse">Ride Distance</a></th>
+  <th><a href="" ng-click="predicate='commute'; reverse=!reverse">Commute Distance</a></th>
+  <th><a href="" ng-click="predicate='trainer'; reverse=!reverse">Trainer Distance</a></th>
+  <th><a href="" ng-click="predicate='wattage'; reverse=!reverse">Avg Wattage</a></th>
+</tr>
+<tr ng-repeat="record in member_data | orderBy:predicate:reverse">
+<td>{{ $index + 1 }}</td>
+<td>{{ record.name }}</td>
+<td class="textright">{{ record.elevation | meters_feet:measurement | number:0 }}</td>
+<td class="textright">{{ record.rides }}</td>
+<td class="textright">{{ record.avg_elevation | meters_feet:measurement | number:2 }}</td>
+<td class="textright">{{ record.total_distance | meters_km_miles:measurement | number:1 }}</td>
+<td class="textright">{{ record.ride | meters_km_miles:measurement | number:1 }}</td>
+<td class="textright">{{ record.commute | meters_km_miles:measurement | number:1 }}</td>
+<td class="textright">{{ record.trainer | meters_km_miles:measurement | number:1 }}</td>
+<td class="textright">{{ record.wattage | number:1 }}</td>
+</tr>
+</table>
+
+<div id="chart"></div>
+</div>
+
+<div ng-show="!member_data[0]"><h2>No members found in the group with rides
+registered this month<h2></div>
