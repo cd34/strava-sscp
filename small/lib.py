@@ -9,7 +9,7 @@ region = make_region().configure(
         'host': 'localhost',
         'port': 6379,
         'db': 1,
-        'redis_expiration_time': 60*60*2,   # 2 hours
+        'redis_expiration_time': 60*60*24,
         'distributed_lock':True
         }
 )
@@ -18,7 +18,6 @@ region = make_region().configure(
 little heavy on the caching as this really hammers the API server
 """
 
-@region.cache_on_arguments()
 def get_strava(uri, key):
     r = requests.get(BASE_API + uri)
     try:
@@ -26,15 +25,15 @@ def get_strava(uri, key):
     except:
         return None
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_clubs(name):
     return get_strava('/clubs?name=%s' % name, 'clubs')
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_members(id):
     return get_strava('/clubs/%s/members' % id, 'members')
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_rides(id, date_start, date_end):
     return get_strava('/rides?athleteId=%s&startDate=%s&endDate=%s' % \
         (id, date_start, date_end) , 'rides')

@@ -41,7 +41,7 @@ function ClubCtrl($scope, $routeParams, $http) {
   url = '/json/' + $routeParams['id'];
   $http.get(url).success(function(data, status, headers, config) {
     $scope.member_data = data.member_data;
-  element.modal('hide');
+    element.modal('hide');
   });
 }
 
@@ -203,14 +203,17 @@ function bar_chart(member_data, key, measurement) {
   if (member_data) {
     data = member_data.filter(function (d) {
       if (d[key]) { 
-        if ( (key == 'elevation') && (measurement == 'imperial') ) { 
-          d.elevation = meters_in_feet(d.elevation, measurement);
+        if (key == 'elevation') { 
+          d.elevationgain = meters_in_feet(d.elevation, measurement);
           return d; 
         } else {
           return d; 
         }
       }
     });
+    if (key == 'elevation') { 
+      key = 'elevationgain';
+    }
     data.sort(function(a, b) { return b[key] - a[key]; });
 
     var margin = {top: 20, right: 20, bottom: 30, left: 70},

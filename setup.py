@@ -15,7 +15,6 @@ requires = [
     'zope.sqlalchemy',
     'waitress',
     'requests',
-    'dogpile',
     'dogpile.cache',
     'redis',
     ]
