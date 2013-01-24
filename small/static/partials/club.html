@@ -33,7 +33,7 @@ Please be patient, this could take a few seconds...
 </tr>
 <tr ng-repeat="record in member_data | orderBy:predicate:reverse">
 <td>{{ $index + 1 }}</td>
-<td>{{ record.name }}</td>
+<td><a href="http://app.strava.com/athletes/{{ record.id }}" target="_new">{{ record.name }}</a></td>
 <td class="textright">{{ record.elevation | meters_feet:measurement | number:0 }}</td>
 <td class="textright">{{ record.rides }}</td>
 <td class="textright">{{ record.avg_elevation | meters_feet:measurement | number:2 }}</td>
