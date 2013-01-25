@@ -1,9 +1,9 @@
 <!doctype html>
 <html ng-app="sscp" ng-controller="MainCtrl">
   <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
     <script type="text/javascript" src="/static/app.js"></script>
     <script src="/static/d3.v3.min.js"></script>
     <title>${self.title()}</title>

@@ -12,9 +12,9 @@ r profile, and copy that URL into the field below.</p>
   <input type="id" name="id" class="span7" ng-model="text" required
     ng-pattern="/[0-9]+$/"
     placeholder="Enter your Strava club ID here">
-    <span class="error" ng-show="form.input.$error.required">
+    <span class="text-error" ng-show="form.id.$error.required">
         Required!</span>
-    <span class="error" ng-show="form.input.$error.pattern">
+    <span class="text-error" ng-show="form.id.$error.pattern">
         Club IDs should be all digits!</span>
 <br/>&nbsp;<br/>
     <button ng-click="update(text)" class="btn btn-primary" ng-disabled="form.$invalid || isUnchanged(post)">Show me my club</button>
