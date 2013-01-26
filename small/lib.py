@@ -16,12 +16,13 @@ region = make_region().configure(
 )
 
 """
-   add a second region with a 60 day cache for the rides to cut down on
-   API hits for clubs. Rides generally don't disappear.
+   add a second region with a 32 day cache for the rides to cut down on
+   API hits for clubs. Rides generally don't disappear, though, this only
+   reports for the current month, so, should never exceed 31 days.
 """
 dbmregion = make_region().configure(
     'dogpile.cache.dbm',
-    expiration_time = 60*60*24*60,
+    expiration_time = 60*60*24*32,
     arguments = {
         "filename":"/var/www/sscp/small/data/cachefile.dbm"
     }
