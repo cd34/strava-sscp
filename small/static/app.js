@@ -36,7 +36,9 @@ function MainCtrl($scope, $http) {
           if (data.data.length == 1) {
             window.location = '#!/' + data.data[0]['id'];
           } else {
-//console.log('multiple results');
+            $scope.clublist = data.data;
+            var element = angular.element('#clubs');
+            element.modal('show');
           }
         });
     }

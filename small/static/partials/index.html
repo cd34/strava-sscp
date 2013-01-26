@@ -17,4 +17,21 @@ you can enter that.</p>
 <br/>&nbsp;<br/>
     <button ng-click="update(text)" class="btn btn-primary" ng-disabled="form.$invalid || isUnchanged(post)">Show me my club</button>
   </form>
+
+<div class="modal hide fade" id="clubs">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Multiple clubs matched</h3>
+  </div>
+  <div class="modal-body">
+<ul class="unstyled">
+<li ng-repeat="club in clublist">
+<a href="/#!/{{ club.id }}" onclick="$('#clubs').modal('hide')">{{ club.name }}</a>
+</li>
+  </div>
+  <div class="modal-footer">
+Please select a club, or, hit X to cancel and search again
+  </div>
+</div>
+
 </div>
