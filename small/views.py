@@ -58,6 +58,4 @@ def json(request):
 
 @view_config(route_name='clubname', renderer='json', request_method='POST')
 def clubname(request):
-    print request.POST
-    print get_clubs(request.POST['clubname'])
     return {'data':get_clubs(request.POST['clubname'])}
