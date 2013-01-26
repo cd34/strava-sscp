@@ -4,7 +4,8 @@ import datetime
 from pyramid.response import Response
 from pyramid.view import view_config
 
-from small.lib import (get_members,
+from small.lib import (get_clubs,
+                       get_members,
                        get_ride,
                        get_rides,
                        region)
@@ -54,3 +55,9 @@ def json(request):
             'wattage':wattage })
 
     return {'member_data':member_data}
+
+@view_config(route_name='clubname', renderer='json', request_method='POST')
+def clubname(request):
+    print request.POST
+    print get_clubs(request.POST['clubname'])
+    return {'data':get_clubs(request.POST['clubname'])}

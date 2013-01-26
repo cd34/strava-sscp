@@ -1,21 +1,20 @@
 <div class="hero-unit">
-    <p>Go to <a href="http://strava.com/" target="_new">Strava</a>, click on you
-r profile, and copy that URL into the field below.</p>
+    <p>Go to <a href="http://strava.com/" target="_new">Strava</a>, click on
+your club and paste in the URL. Or, if you know the club name or numeric id,
+you can enter that.</p>
 <h4>Note: this is not endorsed by Strava. It makes use of their API. No password
- or authentication information is needed. Only your profile URL is used to query
- the API.</h4>
+ or authentication information is needed. Only your club id is used to query
+ the API. Rides that are flagged private are not included.</h4>
 </div>
 
 <div ng-controller="MainCtrl">
   <form name="form" class="css-form" novalidate method="post">
   Strava Club ID:
   <input type="id" name="id" class="span7" ng-model="text" required
-    ng-pattern="/[0-9]+$/"
-    placeholder="Enter your Strava club ID here">
+    placeholder="Enter your Strava club ID, URL or name here">
     <span class="text-error" ng-show="form.id.$error.required">
         Required!</span>
-    <span class="text-error" ng-show="form.id.$error.pattern">
-        Club IDs should be all digits!</span>
 <br/>&nbsp;<br/>
     <button ng-click="update(text)" class="btn btn-primary" ng-disabled="form.$invalid || isUnchanged(post)">Show me my club</button>
   </form>
+</div>

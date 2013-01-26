@@ -1,3 +1,4 @@
+from urllib import quote_plus
 from dogpile.cache import make_region
 import requests
 
@@ -27,7 +28,7 @@ def get_strava(uri, key):
 
 @region.cache_on_arguments(expiration_time=3600)
 def get_clubs(name):
-    return get_strava('/clubs?name=%s' % name, 'clubs')
+    return get_strava('/clubs?name=%s' % quote_plus(name), 'clubs')
 
 @region.cache_on_arguments(expiration_time=3600)
 def get_members(id):

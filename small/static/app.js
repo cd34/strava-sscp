@@ -17,12 +17,29 @@ var sscp = angular.module('sscp', []).
     };
   });
 
-function MainCtrl($scope) {
+function MainCtrl($scope, $http) {
   $scope.master= {};
 
-  $scope.update = function(id) {
-    $scope.master= angular.copy(id);
-    window.location = '#!/' + id;
+  $scope.update = function(submitted) {
+    $scope.master= angular.copy(submitted);
+    if (submitted.match(/^[0-9]+$/)) {
+      window.location = '#!/' + submitted;
+    } else {
+      clubname = submitted;
+      if (submitted.match(/^http/)) {
+// http://app.strava.com/clubs/bike-commuter-cabal
+        clubname = submitted.match(/http:\/\/app.strava.com\/clubs\/(.*)$/)[1].replace(/-/g,' ');
+      }
+      $http.post('/clubname', $.param({'clubname':clubname}),
+        { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
+        .success(function(data, status, headers, config) {
+          if (data.data.length == 1) {
+            window.location = '#!/' + data.data[0]['id'];
+          } else {
+//console.log('multiple results');
+          }
+        });
+    }
   }; 
 }
 
