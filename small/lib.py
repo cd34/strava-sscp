@@ -19,12 +19,16 @@ region = make_region().configure(
    add a second region with a 32 day cache for the rides to cut down on
    API hits for clubs. Rides generally don't disappear, though, this only
    reports for the current month, so, should never exceed 31 days.
+   moved dogpile lockfiles to tmpfs, anydbm is slloooooooooow handling
+   locks.
 """
 dbmregion = make_region().configure(
     'dogpile.cache.dbm',
     expiration_time = 60*60*24*32,
     arguments = {
-        "filename":"/var/www/sscp/small/data/cachefile.dbm"
+        "filename":"/var/www/sscp/small/data/cachefile.dbm",
+        "rw_lockfile":"/var/lib/dogpile/cachefile.dbm.rw.lock",
+        "dogpile_lockfile":"/var/lib/dogpile/cachefile.dbm.dogpile.lock"
     }
 )
 

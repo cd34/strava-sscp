@@ -18,6 +18,9 @@ posting this through a trouble ticket.
 Installation Documentation
 ---------------
 
+    create tmpfs for dogpile, anydbm locks are expensive
+      tmpfs   /var/lib/dogpile        tmpfs   rw,size=16M      0       0
+
     virtualenv /var/www/sscp
     cd /var/www/sscp
     source bin/activate
