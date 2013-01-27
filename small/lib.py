@@ -39,19 +39,19 @@ def get_strava(uri, args, key):
     except:
         return None
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_clubs(name):
     return get_strava('/clubs', {'name':name}, 'clubs')
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_members(id):
     return get_strava('/clubs/%s/members' % id, None, 'members')
 
-@region.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=3600)
 def get_rides(id, date_start, date_end):
     return get_strava('/rides', {'athleteID':id, 'startDate':date_start, \
         'endDate':date_end} , 'rides')
 
-@dbmregion.cache_on_arguments()
+@region.cache_on_arguments(expiration_time=2764800)
 def get_ride(id):
     return get_strava('/rides/%s' % id, None, 'ride')
