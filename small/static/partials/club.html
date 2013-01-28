@@ -24,16 +24,16 @@ column you have chosen to sort by.
 <tr>
   <th>Position</th>
   <th>Name</th>
-  <th><a href="" ng-init="predicate='-elevation'" ng-click="predicate='elevation'; reverse=!reverse">Elevation</a></th>
-  <th><a href="" ng-click="predicate='rides'; reverse=!reverse">Rides</a></th>
-  <th><a href="" ng-click="predicate='avg_elevation'; reverse=!reverse">Average Elevation</a></th>
-  <th><a href="" ng-click="predicate='total_distance'; reverse=!reverse">Total Distance</a></th>
-  <th><a href="" ng-click="predicate='ride'; reverse=!reverse">Ride Distance</a></th>
-  <th><a href="" ng-click="predicate='commute'; reverse=!reverse">Commute Distance</a></th>
-  <th><a href="" ng-click="predicate='trainer'; reverse=!reverse">Trainer Distance</a></th>
-  <th><a href="" ng-click="predicate='wattage'; reverse=!reverse">Avg Wattage</a></th>
+  <th><a href="" ng-init="predicate='-elevation'" ng-click="predicate='elevation'">Elevation</a></th>
+  <th><a href="" ng-click="predicate='-rides'">Rides</a></th>
+  <th><a href="" ng-click="predicate='-avg_elevation'">Average Elevation</a></th>
+  <th><a href="" ng-click="predicate='-total_distance'">Total Distance</a></th>
+  <th><a href="" ng-click="predicate='-ride'">Ride Distance</a></th>
+  <th><a href="" ng-click="predicate='-commute'">Commute Distance</a></th>
+  <th><a href="" ng-click="predicate='-trainer'">Trainer Distance</a></th>
+  <th><a href="" ng-click="predicate='-wattage'">Avg Wattage</a></th>
 </tr>
-<tr ng-repeat="record in member_data | orderBy:predicate:reverse">
+<tr ng-repeat="record in member_data | orderBy:predicate">
 <td>{{ $index + 1 }}</td>
 <td><a href="http://app.strava.com/athletes/{{ record.id }}" target="_new">{{ record.name }}</a></td>
 <td class="textright">{{ record.elevation | meters_feet:measurement | number:0 }}</td>
