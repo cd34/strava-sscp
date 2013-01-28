@@ -40,3 +40,13 @@ Since you have to walk the club to walk the members to walk their rides
 by date, a busy club will generate hundreds of requests. The second pageload
 will be pulled from the cache. After an hour, the club and riders will be 
 fetched, but, the actual ride data is cached for 24 hours.
+
+API features
+------------
+
+* ability to pull multiple rides in a single fetch - when a club is fetched
+and the member list is returned, walking the member list to get their rides
+generates a ton of requests. A method to fetch a batch of rides would be 
+good for analysis like this. As it stands, walking the club to get the 
+members, then the members to get the rides, results in 1300+ API requests.
+
