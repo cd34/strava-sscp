@@ -10,6 +10,12 @@ Please be patient, this could take a few seconds...
   </div>
 </div>
 
+<h2>{{ club_data.name }}</h2>
+<blockquote><p>{{ club_data.description }}</p>
+<a href="/#!/{{ club_data.id }}">This Month's Stats</a></li> &middot; 
+<a href="/#!/{{ club_data.id }}/lastmonth">Last Month's Stats</a></li>
+</blockquote>
+
 <div ng-hide="!member_data[0]">
 <p>
 <div class="btn-group">

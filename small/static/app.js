@@ -6,6 +6,8 @@ var sscp = angular.module('sscp', []).
         when('/', {templateUrl: 'static/partials/index.html'}).
         when('/:id', {templateUrl: 'static/partials/club.html', 
           controller: ClubCtrl}).
+        when('/:id/:lastmonth', {templateUrl: 'static/partials/club.html', 
+          controller: ClubCtrl}).
         otherwise({redirectTo: '/'});
   }]).filter('meters_feet', function () {
     return function (distance, measurement) {
@@ -58,8 +60,12 @@ function ClubCtrl($scope, $routeParams, $http) {
   element.modal('show');
 
   url = '/json/' + $routeParams['id'];
+  if ($routeParams['lastmonth']) {
+    url += '/lastmonth';
+  }
   $http.get(url).success(function(data, status, headers, config) {
     $scope.member_data = data.member_data;
+    $scope.club_data = data.club_data;
     element.modal('hide');
   });
 }
