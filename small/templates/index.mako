@@ -14,6 +14,9 @@
 <style type="text/css">
   .table tr td.textright {text-align:right};
 </style>
+<script type="text/javascript">
+$('.dropdown-toggle').dropdown()
+</script>
   </head>
   <body>
 <%include file="header.mako" />

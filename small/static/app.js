@@ -4,6 +4,7 @@ var sscp = angular.module('sscp', []).
       $locationProvider.hashPrefix('!');
       $routeProvider.
         when('/', {templateUrl: 'static/partials/index.html'}).
+        when('/about', {templateUrl: 'static/partials/about.html'}).
         when('/:id', {templateUrl: 'static/partials/club.html', 
           controller: ClubCtrl}).
         when('/:id/:lastmonth', {templateUrl: 'static/partials/club.html', 
