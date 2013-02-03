@@ -1,16 +1,11 @@
 import calendar
 import datetime
 
-from pyramid.response import Response
 from pyramid.view import view_config
 
 from small.lib import (get_member_data,
                        get_club,
-                       get_clubs,
-                       get_members,
-                       get_ride,
-                       get_rides,
-                       region)
+                       get_clubs)
 
 
 @view_config(route_name='home', renderer='index.mako')

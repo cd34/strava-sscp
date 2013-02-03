@@ -1,4 +1,3 @@
-from urllib import quote_plus
 from dogpile.cache import make_region
 import requests
 
