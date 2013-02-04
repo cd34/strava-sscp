@@ -17,6 +17,7 @@ requires = [
     'requests',
     'dogpile.cache',
     'redis',
+    'fabric',
     ]
 
 setup(name='small',

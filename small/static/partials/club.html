@@ -32,11 +32,20 @@ column you have chosen to sort by.
 <tr>
   <th>Position</th>
   <th>Name</th>
-  <th><a href="" ng-init="predicate='-elevation'" ng-click="predicate='-elevation'">Elevation</a></th>
+  <th><a href="" ng-init="predicate='-elevation'" ng-click="predicate='-elevation'">Elevation</a>
+<span ng-show="measurement=='imperial'">(miles)</span>
+<span ng-show="measurement=='metric'">(kms)</span>
+</th>
+  <th><a href="" ng-click="predicate='-avg_elevation'">Average Elevation</a>
+<span ng-show="measurement=='imperial'">(feet)</span>
+<span ng-show="measurement=='metric'">(meters)</span>
+</th>
   <th><a href="" ng-click="predicate='-rides'">Rides</a></th>
-  <th><a href="" ng-click="predicate='-avg_elevation'">Average Elevation</a></th>
   <th><a href="" ng-click="predicate='-total_distance'">Total Distance</a></th>
-  <th><a href="" ng-click="predicate='-ride'">Ride Distance</a></th>
+  <th><a href="" ng-click="predicate='-ride'">Ride Distance</a>
+<span ng-show="measurement=='imperial'">(miles)</span>
+<span ng-show="measurement=='metric'">(kms)</span>
+</th>
   <th><a href="" ng-click="predicate='-commute'">Commute Distance</a></th>
   <th><a href="" ng-click="predicate='-trainer'">Trainer Distance</a></th>
   <th><a href="" ng-click="predicate='-wattage'">Avg Wattage</a></th>
@@ -45,13 +54,13 @@ column you have chosen to sort by.
 <td>{{ $index + 1 }}</td>
 <td><a href="http://app.strava.com/athletes/{{ record.id }}" target="_new">{{ record.name }}</a></td>
 <td class="textright">{{ record.elevation | meters_feet:measurement | number:0 }}</td>
+<td class="textright">{{ record.avg_elevation | meters_feet:measurement | number:0 }}</td>
 <td class="textright">{{ record.rides }}</td>
-<td class="textright">{{ record.avg_elevation | meters_feet:measurement | number:2 }}</td>
 <td class="textright">{{ record.total_distance | meters_km_miles:measurement | number:1 }}</td>
 <td class="textright">{{ record.ride | meters_km_miles:measurement | number:1 }}</td>
 <td class="textright">{{ record.commute | meters_km_miles:measurement | number:1 }}</td>
 <td class="textright">{{ record.trainer | meters_km_miles:measurement | number:1 }}</td>
-<td class="textright">{{ record.wattage | number:1 }}</td>
+<td class="textright">{{ record.wattage | number:0 }}</td>
 </tr>
 </table>
 
