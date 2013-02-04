@@ -2,7 +2,7 @@ from __future__ import with_statement
 from fabric.api import local, settings, abort, run, cd, env
 from fabric.contrib.console import confirm
 
-env.hosts = ['k1c2.mia.colo-cation.com']
+env.hosts = ['hostname']
 
 def test():
     with settings(warn_only=True):
