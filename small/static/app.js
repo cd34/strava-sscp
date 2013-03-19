@@ -62,7 +62,7 @@ function ClubCtrl($scope, $routeParams, $http) {
 
   url = '/json/' + $routeParams['id'];
   if ($routeParams['lastmonth']) {
-    url += '/lastmonth';
+    url += '/' + $routeParams['lastmonth'];
   }
   $http.get(url).success(function(data, status, headers, config) {
     $scope.member_data = data.member_data;
